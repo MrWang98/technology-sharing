@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!--顶部导航栏,利用th:fragment提取出来,命名为topbar-->
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" th:fragment="topbar">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="http://getbootstrap.com/docs/4.0/examples/dashboard/#">Admin
+        name</a>
+    <input aria-label="Search" class="form-control form-control-dark w-100" placeholder="Search" type="text">
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" th:href="@{/signout}">Sign out</a>
+        </li>
+    </ul>
+</nav>
+
+<!--侧边栏,利用th:fragment提取出来,命名为sidebar-->
+<nav class="col-md-2 d-none d-md-block bg-light sidebar" th:fragment="siderbar">
+    <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a th:class="${active=='list.html'?'nav-link active':'nav-link'}" th:href="@{/emps}">
+                    <svg class="feather feather-users" fill="none" height="24" stroke="currentColor"
+                         stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                         width="24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    Customers
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</html>
