@@ -5,6 +5,8 @@ import com.example.technologysharing.mapper.UserAccountMapper;
 import com.example.technologysharing.pojo.Announcement;
 import com.example.technologysharing.service.AddService;
 import com.example.technologysharing.vo.AnnouncementVO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,7 @@ import java.util.Collection;
  * @Author MrWang
  * @Date 2020/10/7 19:38
  */
+@Api(tags = "管理员相关接口")
 @Controller
 public class AdminAccountController {
     @Autowired
@@ -30,25 +33,7 @@ public class AdminAccountController {
     @Autowired
     private AddService addService;
 
-
-
-//    @Autowired
-//    private AdminAccountDao adminAccountDao;
-//
-//    @Autowired
-//    private DepartmentDao departmentDao;
-//
-//    @InitBinder
-//    protected void initBinder(WebDataBinder binder) {
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
-//    }
-//
-//    @InitBinder
-//    protected void init2(WebDataBinder binder){
-//        binder.registerCustomEditor(Department.class, new DepartmentEditor());
-//    }
-//
+    @ApiOperation(value = "查看公告")
     @RequestMapping("/emps")
     public String list(Model model, HttpSession session) {
         if(session!=null){
@@ -61,11 +46,13 @@ public class AdminAccountController {
         }
     }
 
+    @ApiOperation(value = "添加公告")
     @GetMapping("/add")
     public String add(Model model) {
         return "emp/add";//返回到添加员工页面
     }
 
+    @ApiOperation(value = "编辑公告")
     @PostMapping("/add")
     public String addAnnouncement(AnnouncementVO vo, HttpSession session) throws Exception{
         String name = null;
