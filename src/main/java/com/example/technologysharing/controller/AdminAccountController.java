@@ -34,7 +34,7 @@ public class AdminAccountController {
     private AddService addService;
 
     @ApiOperation(value = "查看公告")
-    @RequestMapping("/emps")
+    @GetMapping("/emps")
     public String list(Model model, HttpSession session) {
         if(session!=null){
             String name = (String) session.getAttribute("LoginUser");
